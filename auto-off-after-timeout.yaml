@@ -5,7 +5,7 @@ blueprint:
   input:
     switch:
         name: Switch
-        description: 
+        description: Switch being monitored and timed out
         selector:
           entity:
             domain: switch
