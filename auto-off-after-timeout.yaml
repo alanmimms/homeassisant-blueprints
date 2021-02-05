@@ -1,0 +1,29 @@
+blueprint:
+  name: Switch Off After Timeout
+  description: Turn a switch off after it has been on for a given amount of time
+  domain: automation
+  input:
+    switch:
+        name: Switch
+        description: 
+        selector:
+          entity:
+            domain: switch
+    timeout:
+        name: Timeout
+        description: How long after switch goes on before it turns off automatically
+        default: '0:15:00'
+
+trigger:
+  - entity_id: !input switch
+    for: !input timeout
+    platform: state
+    to: 'on'
+    for: !input timeout
+condition: []
+action:
+  - data:
+      entity_id: '{{switch}}'
+    service: 'switch.turn_off'
+mode: restart
+
