@@ -15,11 +15,11 @@ blueprint:
         default: '0:15:00'
 
 trigger:
-  - entity_id: !input switch
-    for: !input timeout
+  - entity_id: '{{switch}}'
+    for: !input '{{timeout}}'
     platform: state
     to: 'on'
-    for: !input timeout
+    for: '{{timeout}}'
 condition: []
 action:
   - data:
